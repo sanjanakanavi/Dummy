@@ -8,3 +8,4 @@
 
 
 # Israel has accused Iran of harboring genocidal intentions, while Iran has accused Israel of conducting a genocide in Gaza. Consequently, Israel has sought sanctions and military action against Iran to stop it from acquiring nuclear weapons.
+# India has condemned the violence.
