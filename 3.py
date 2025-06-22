@@ -12,3 +12,5 @@ print()
 name = input("what is ur name")
 print(len(name))  # printing the length of the string
 print("chill")
+print("chill" * 3)  # printing the string 3 times
+print("chill" + " " + "dinkachika")  # concatination
