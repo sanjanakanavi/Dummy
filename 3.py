@@ -11,3 +11,4 @@ print()
 
 name = input("what is ur name")
 print(len(name))  # printing the length of the string
+print("chill")

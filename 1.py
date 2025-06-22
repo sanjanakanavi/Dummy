@@ -8,3 +8,8 @@ print("hello world \nhello world \nhello world")
 print()
 print("Sanjana"+" Kanavi")
 'all about print function'
+'all about print function'
+'all about print function'
+'all about print function'
+'all about print function'
+'all about print function'
