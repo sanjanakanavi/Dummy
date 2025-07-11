@@ -48,7 +48,7 @@ def display(object_duck, object_dog, object_person):  # zparameters accepting ob
     object_dog.swim()
     object_dog.speaks()
     print("methods of person class")
-    object_person.speaks()
+    object_person.speaks()  # accessing method of person class
 
 
 'creating objects for all classes'
@@ -56,3 +56,4 @@ duck = Duck()
 dog = Dog()
 p = Person()
 display(duck, dog, p)  # calling function and passing object as parameter
+
