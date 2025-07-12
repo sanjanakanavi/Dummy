@@ -32,3 +32,13 @@ class Car(Vehicle):
 
     def start(self):
         print("start with key")
+
+b = Bike(2, "red")
+s = Scooty(2)
+c = Car(4, 6)
+b.start()
+s.start()
+c.start()
+
+p = c
+p.start()
