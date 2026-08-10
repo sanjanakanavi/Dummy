@@ -82,8 +82,7 @@ async def getProductDetails():
 
     return getProductInfo
 
-# @app.post("/cart")
-# async def addToCart(userId):
+#add to cart
 
 
 if __name__ == "__main__":
