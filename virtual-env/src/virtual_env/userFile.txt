@@ -1,0 +1,9 @@
+New user created:
+[
+    {
+        "userId": 580,
+        "userName": "Sanjana Kanavi",
+        "userEmail": "sanjana@gmail.com",
+        "userPassword": "23456"
+    }
+]

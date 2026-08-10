@@ -1,0 +1,28 @@
+1. modules and packages
+2. list tuple dict sets strings list compressors etc stuff
+
+object
+│
+├── Sequence
+│   ├── list        (mutable)
+│   ├── tuple       (immutable)
+│   ├── range
+│   ├── str
+│   ├── bytes
+│   └── bytearray
+│
+├── Set
+│   ├── set         (mutable)
+│   └── frozenset   (immutable)
+│
+└── Mapping
+    └── dict
+
+Object-Oriented Programming (OOP)
+Classes and objects
+abstraction
+Inheritance
+Polymorphism
+Encapsulation
+
+
