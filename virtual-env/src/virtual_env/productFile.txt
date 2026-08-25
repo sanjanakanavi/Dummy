@@ -1,7 +1,17 @@
 New product created:
 [
     {
-        "id": 15,
+        "id": 99,
+        "name": "Herbal Shampoo",
+        "price": 300,
+        "quantity": 1,
+        "description": "Anti Dandruff and Hairfall care"
+    }
+]
+New product created:
+[
+    {
+        "id": 34,
         "name": "Herbal Shampoo",
         "price": 300,
         "quantity": 1,

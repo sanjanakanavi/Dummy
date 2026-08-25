@@ -27,7 +27,7 @@
 # if __name__ == "__main__":
 #     uvicorn.run(app, host="0.0.0.0", port=8001)
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Body, HTTPException
 from pydantic import BaseModel, Field, ConfigDict
 import uvicorn
 import json
@@ -72,7 +72,7 @@ async def createUser(userModel : UserModel):
         userFile.write("New user created:\n")
         json.dump(userDetails, userFile, indent=4)
         userFile.close()
-        return f"product got created with Id: {userModel.userId}"
+        return f"user got created with Id: {userModel.userId}"
 
 @app.get("/product")
 async def getProductDetails():
@@ -83,7 +83,85 @@ async def getProductDetails():
     return getProductInfo
 
 #add to cart
+@app.post("/cart")
+async def addToCart(userId: int, productId: int = Body(..., embed=True)):
+    productAdded = {
+        "userId" : userId,
+        "productId" : productId
+    }
+    with open("addToCartFile.txt", "a") as addToCartFile:
+            addToCartFile.write("\nNew product added to cart:\n")
+            json.dump(productAdded, addToCartFile, indent=4)
+            addToCartFile.close()
+    return productAdded
 
+# @app.get("/cartItems")
+# async def addToCart(userId: int):
+#     with open("productFile.txt", "r") as getProduct:
+#             getProductDetails = json.load(getProduct)
+#             getProduct.close()
+#     return getProductDetails
+
+import json
+from fastapi import FastAPI, HTTPException
+
+app = FastAPI()
+
+
+@app.get("/cartItems")
+async def get_cart_items(userId: int):
+    # Read cart items and find the product IDs for this user
+    with open("addToCartFile.txt", "r") as file:
+        cart_content = file.read()
+
+    cart_content = cart_content.replace("New product added to cart:", "")
+    decoder = json.JSONDecoder()
+    product_ids = []
+
+    while cart_content.strip():
+        cart_content = cart_content.lstrip()
+
+        cart_item, position = decoder.raw_decode(cart_content)
+
+        if cart_item["userId"] == userId:
+            product_ids.append(cart_item["productId"])
+
+        cart_content = cart_content[position:]
+
+    if not product_ids:
+        raise HTTPException(
+            status_code=404,
+            detail=f"No cart items found for userId {userId}"
+        )
+
+    # Read all product blocks from productFile.txt
+    with open("productFile.txt", "r") as file:
+        product_content = file.read()
+
+    product_content = product_content.replace("New product created:", "")
+    products = []
+
+    while product_content.strip():
+        product_content = product_content.lstrip()
+
+        product_list, position = decoder.raw_decode(product_content)
+        products.extend(product_list)
+
+        product_content = product_content[position:]
+
+    # Match cart product IDs with product details
+    products_by_id = {product["id"]: product for product in products}
+
+    cart_products = [
+        products_by_id[product_id]
+        for product_id in product_ids
+        if product_id in products_by_id
+    ]
+
+    return {
+        "userId": userId,
+        "products": cart_products
+    }
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8001)
+    uvicorn.run(app, host="0.0.0.0", port=8002)

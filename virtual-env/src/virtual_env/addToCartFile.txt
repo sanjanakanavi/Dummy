@@ -1,0 +1,21 @@
+
+New product added to cart:
+{
+    "userId": 999,
+    "productId": 23
+}
+New product added to cart:
+{
+    "userId": 765,
+    "productId": 78
+}
+New product added to cart:
+{
+    "userId": 897,
+    "productId": 99
+}
+New product added to cart:
+{
+    "userId": 897,
+    "productId": 34
+}
